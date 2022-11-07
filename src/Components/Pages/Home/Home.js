@@ -1,7 +1,19 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Service from '../Service/Service';
 import './Home.css'
+
 const Home = () => {
+    const [services , setServices] = useState([])
+    console.log(services)
+    useEffect(()=>{
+        fetch('http://localhost:5000/homeservice')
+        .then(res=>res.json())
+        .then(data=>setServices(data))
+    },[])
+
     return (
         <div>
             <div className="container">
@@ -16,8 +28,11 @@ const Home = () => {
                 </div>
             </div>
             <div className="container">
+                <h2 className='text-center py-3'>Explore Our Service</h2>
                 <div className="row">
-                    <h2 className='text-center py-3'>Explore Our Service </h2>
+                    {
+                        services.map(service=><Service service={service}></Service>)
+                    }
                 </div>
             </div>
         </div>

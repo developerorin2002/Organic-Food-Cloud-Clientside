@@ -8,8 +8,9 @@ const Header = () => {
         <div>
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Container>
-                    <div className='logo py-4'>
+                    <div className='logo py-4 d-flex align-items-center'>
                         <Link to='/home'><img src={logo} alt="" /></Link>
+                        <h3> Organic Food Cloud</h3>
                     </div>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
