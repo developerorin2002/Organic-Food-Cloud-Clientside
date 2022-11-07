@@ -1,0 +1,10 @@
+.logo img{
+    height: 50px;
+    width: 50px;
+}
+.nav-container a{
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    margin-right: 10px;
+}
