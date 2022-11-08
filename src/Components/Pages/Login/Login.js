@@ -1,16 +1,34 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import loginImg from '../../Assets/loginImg2.svg';
 import './Login.css';
 import googleImg from '../../Assets/icons/google.png'
+import { AuthenticationContext } from '../../AuthContext/AuthContext';
+import toast from 'react-hot-toast';
 const Login = () => {
+    const {loginUser,googleSignIn} = useContext(AuthenticationContext)
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
         console.log(email,password)
+        loginUser(email,password)
+        .then(res=>{
+            toast.success('User Login Successfull');
+
+        })
+        .catch(err=>toast.err(err.message));
+
+
+    };
+    const handleGoogleLogin = () =>{
+        googleSignIn()
+        .then(res=>{
+            console.log(res.user)
+            toast.success('User Login Successfull')
+        })
     }
     return (
         <div>
@@ -37,7 +55,7 @@ const Login = () => {
                             </form>
                             <p>Dont Have An Account? Please <Link className='register-link' to='/register'>Register</Link></p>
                             <div className='mt-2'>
-                                <button o className='icon-border px-3 py-2'> <img src={googleImg} className="google-icon" alt="" /> Continue with google</button>
+                                <button onClick={handleGoogleLogin} className='icon-border px-3 py-2'> <img src={googleImg} className="google-icon" alt="" /> Continue with google</button>
                             </div>
                            
 

@@ -3,14 +3,36 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import registerImg from '../../Assets/register.svg'
 import googleImg from '../../Assets/icons/google.png'
+import { useContext } from 'react';
+import { AuthenticationContext } from '../../AuthContext/AuthContext';
+import toast from 'react-hot-toast';
 const Register = () => {
-    const handleRegisterSubmit = (event)=>{
+    const { signUpUser, updateUserProfile,googleSignIn  } = useContext(AuthenticationContext);
+    const handleRegisterSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const photoUrl = form.photoUrl.value;
         const password = form.password.value;
         const name = form.name.value;
+        signUpUser(email, password)
+            .then(res => {
+                toast.success('Registration Successfull')
+                updateUserProfile(name, photoUrl)
+                    .then(res => {
+                        toast.success('Name Updated')
+                    })
+            })
+            .catch(err => toast.err(err))
+
+    };
+    // google signUp 
+    const handleGoogle = () =>{
+        googleSignIn()
+        .then(res=>{
+            toast.success('Login SuccessFully')
+        })
+        .catch(err=>toast.err(err.message))
 
     }
     return (
@@ -44,9 +66,9 @@ const Register = () => {
                             </form>
                             <p>Are You Already Registered ? Please <Link className='register-link' to='/login'>Login</Link></p>
                             <div className='mt-2'>
-                                <button className='icon-border px-3 py-2' > <img src={googleImg} className="google-icon" alt="" />continue with google</button>
+                                <button className='icon-border px-3 py-2' onClick={handleGoogle} > <img src={googleImg} className="google-icon" alt="" />continue with google</button>
                             </div>
-                           
+
                         </div>
                     </div>
                 </div>

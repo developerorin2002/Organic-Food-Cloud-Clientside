@@ -15,3 +15,13 @@
     font-size: 18px;
     
 }
+.logout-btn{
+    border: none;
+    padding: 10px 20px;
+    background-color: #273746;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    
+
+}
