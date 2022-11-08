@@ -3,9 +3,10 @@ import MainLayout from "../Layout/MainLayout";
 import Details from "../Pages/Details/Details";
 import Home from '../Pages/Home/Home'
 import Login from "../Pages/Login/Login";
+import MyReviews from "../Pages/MyReviews/MyReviews";
 import Register from "../Pages/Register/Register";
-import Review from "../Pages/Review/Review";
 import Services from "../Pages/Services/Services";
+import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 export const router = createBrowserRouter([
     {
         path:'/',
@@ -25,7 +26,7 @@ export const router = createBrowserRouter([
             },
             {
                 path:'/review',
-                element:<Review></Review>
+                element:<PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>
             },
             {
                 path:'/details/:id',

@@ -23,5 +23,25 @@
     font-size: 18px;
     border-radius: 5px;
     
-
+}
+.review-main-text{
+    text-transform: uppercase;
+    color: rgba(0, 0, 255, 0.873);
+}
+.rating select{
+    border: 1px solid #eaeaea;
+    padding: 5px 20px;
+    font-size: 20px;
+}
+.rating p{
+    font-size: 20px;
+}
+.rate-icon {
+    color: goldenrod;
+    font-size: 25px;
+    
+}
+.review-login a{
+    text-decoration: none;
+    color: #fff;
 }

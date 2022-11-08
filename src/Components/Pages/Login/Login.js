@@ -16,6 +16,8 @@ const Login = () => {
         console.log(email,password)
         loginUser(email,password)
         .then(res=>{
+            console.log(res.user)
+        
             toast.success('User Login Successfull');
 
         })
