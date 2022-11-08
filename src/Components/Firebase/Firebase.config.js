@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBbLLNO1q3X4q1lXaaudsTlbPaN2tA0IF0",
-  authDomain: "food-cloud-c4e01.firebaseapp.com",
-  projectId: "food-cloud-c4e01",
-  storageBucket: "food-cloud-c4e01.appspot.com",
-  messagingSenderId: "270427002784",
-  appId: "1:270427002784:web:a5cfd9f33ab6ebb098b6c5"
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId:process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId
 };
 
 // Initialize Firebase
