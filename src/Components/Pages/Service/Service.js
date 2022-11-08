@@ -28,7 +28,7 @@ const Service = ({ service }) => {
                 }
             </div>
             <button className='service-btn my-3'><Link to={`/details/${_id}`}>See Details</Link></button>
-
+                
         </div>
     );
 };

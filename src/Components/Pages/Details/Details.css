@@ -1,0 +1,17 @@
+.review-avatar img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.review-input {
+   border: 2px solid #eaeaea;
+
+}
+.review-btn{
+    border: none;
+    padding: 10px 30px;
+    background-color: #273746;
+    color: #fff;
+    font-size: 18px;
+    
+}

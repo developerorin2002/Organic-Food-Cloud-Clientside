@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { FaFolderOpen, FaHome, FaUser } from 'react-icons/fa';
+import { FaChevronRight, FaFolderOpen, FaHome, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Service from '../Service/Service';
 import './Home.css'
@@ -34,6 +34,17 @@ const Home = () => {
                     {
                         services.map(service => <Service service={service}></Service>)
                     }
+                    <div>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-4"></div>
+                                <div className="col-lg-4 text-center">
+                                    <button className='banner-btn'><Link to='/services'>View All Services <FaChevronRight></FaChevronRight> </Link></button>
+                                </div>
+                                <div className="col-lg-4"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             {/* about us section  */}
@@ -42,12 +53,12 @@ const Home = () => {
                     <div className="row py-5">
                         <h1 className='text-center py-3 text-white'>About Us </h1>
                         <div className="col-lg-4">
-                        <p  className='text-center'><FaFolderOpen className='about-icon'/></p>
+                            <p className='text-center'><FaFolderOpen className='about-icon' /></p>
                             <h4 className='text-white text-center my-4'>Our History</h4>
                             <p className=' text-white'>Early human nutrition was largely determined by the availability and palatability of foods.[2] Humans evolved as omnivorous hunter-gatherers, though the diet of humans has varied significantly depending on location and climate</p>
                         </div>
                         <div className="col-lg-4">
-                            <p className='text-center'><FaHome  className='about-icon'/></p>
+                            <p className='text-center'><FaHome className='about-icon' /></p>
                             <h4 className='text-white text-center'>Our Mission</h4>
                             <p className='text-white mt-4'>A restaurant’s mission, vision, and values make up part of your brand’s identity. They fuel business decisions while inspiring customers to frequent and employees to work for your restaurant. Creating a mission statement for your restaurant can help you think critically about your goals, beyond serving delicious food.</p>
                         </div>
