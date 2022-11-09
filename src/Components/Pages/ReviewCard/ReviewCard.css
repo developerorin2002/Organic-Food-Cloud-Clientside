@@ -21,3 +21,9 @@
 .review-ratings{
     color: goldenrod;
 }
+.trash-bin{
+    font-size: 20px;
+}
+.dlt-btn{
+    border: none;
+}

@@ -1,11 +1,13 @@
 import React from 'react';
-import { FaCheckCircle, FaStar, FaTimes} from 'react-icons/fa';
-import './ReviewCard.css'
-const ReviewCard = ({ reviewinfo }) => {
-    const { email, productname, review, userImage, userVerified, rating } = reviewinfo;
-    return (
-        <div className='col-lg-4 py-5'>
+import { useContext } from 'react';
+import { FaCheckCircle, FaStar, FaTimes, FaTrashAlt } from 'react-icons/fa';
+import { AuthenticationContext } from '../../AuthContext/AuthContext';
 
+const MyReviewsCard = ({reviewInfo , handleDelete}) => {
+    const {user} = useContext(AuthenticationContext);
+    const { email, productname,_id, review, userImage, userVerified, rating } = reviewInfo;
+    return (
+        <div className='col-lg-4 py-3'>
             <div className='review-card p-3'>
                 <div className='review-img text-center'>
                     <img src={userImage} alt="" />
@@ -27,7 +29,9 @@ const ReviewCard = ({ reviewinfo }) => {
                         {
                             userVerified ? <> <p className='text-success m-0' > <FaCheckCircle /></p></> : <><p className='text-danger'><FaTimes /></p></>
                         }
-                       
+                       {
+                        user?.email&&user?.uid?<><button onClick={()=>handleDelete(_id)} className='p-3 dlt-btn'><FaTrashAlt className='text-danger'></FaTrashAlt></button></>:<></>
+                       }
                     </div>
                 </div>
             </div>
@@ -35,4 +39,4 @@ const ReviewCard = ({ reviewinfo }) => {
     );
 };
 
-export default ReviewCard;
+export default MyReviewsCard;
