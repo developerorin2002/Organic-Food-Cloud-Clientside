@@ -13,3 +13,19 @@
     width: 50px;
     border-radius: 50%;
 }
+.nav-container{
+    display: flex;
+    align-items: center;
+}
+@media only screen and (max-width: 600px) {
+    .nav-container{
+        flex-direction: column;
+
+    }   
+    .nav-container > p{
+        margin-bottom: 5px !important;
+    } 
+    .logo-text{
+        font-size: 20px;
+    }
+}

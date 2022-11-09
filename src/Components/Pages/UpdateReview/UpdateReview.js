@@ -17,7 +17,7 @@ const UpdateReview = () => {
         const message = form.message.value;
         const updatedInfo = {
             message: message,
-            rating: rating
+            rating: parseInt(rating)
         };
         fetch(`http://localhost:5000/update/${_id}`, {
             method: 'PATCH',

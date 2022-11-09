@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Spinner } from 'react-bootstrap';
-import { Navigate } from 'react-router-dom';
+import { Navigate, } from 'react-router-dom';
 import { AuthenticationContext } from '../AuthContext/AuthContext';
 
 const PrivateRoutes = ({children}) => {
@@ -11,7 +11,7 @@ const PrivateRoutes = ({children}) => {
    if(user&&user.email){
     return children;
    }
-   return <Navigate to='/login'></Navigate>
+   return <Navigate to='/login'/>
 };
 
 export default PrivateRoutes;
