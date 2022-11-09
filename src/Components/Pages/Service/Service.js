@@ -20,7 +20,7 @@ const Service = ({ service }) => {
             </div>
             <div className='service-price d-flex justify-content-between'>
                 <p>Price : {price}</p>
-                <p className='d-flex align-items-center'>Ratings : {[...Array(ratings).keys()].map(s => <FaStar className='ratings' />)}</p>
+                <p className='d-flex align-items-center'>Ratings : {[...Array(ratings).keys()].map(s => <FaStar key={s} className='ratings' />)}</p>
             </div>
             <div className="service-details">
                 {

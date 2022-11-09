@@ -1,11 +1,12 @@
 import React from 'react';
 import { useContext } from 'react';
 import { FaCheckCircle, FaStar, FaTimes, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import { AuthenticationContext } from '../../AuthContext/AuthContext';
-
-const MyReviewsCard = ({reviewInfo , handleDelete}) => {
-    const {user} = useContext(AuthenticationContext);
-    const { email, productname,_id, review, userImage, userVerified, rating } = reviewInfo;
+import './MyReviewCard.css'
+const MyReviewsCard = ({ reviewInfo, handleDelete }) => {
+    const { user } = useContext(AuthenticationContext);
+    const { email, productname, _id, review, userImage, userVerified, rating } = reviewInfo;
     return (
         <div className='col-lg-4 py-3'>
             <div className='review-card p-3'>
@@ -20,7 +21,7 @@ const MyReviewsCard = ({reviewInfo , handleDelete}) => {
                 </div>
                 <div className='product-name'>
                     {
-                        rating ? <p className='m-0'>Ratings : {[...Array(rating).keys()].map(r => <FaStar className='review-ratings'></FaStar>)}</p> : <></>
+                        rating ? <p className='m-0'>Ratings : {[...Array(rating).keys()].map(r => <FaStar key={r} className='review-ratings'></FaStar>)}</p> : <></>
                     }
                 </div>
                 <div>
@@ -29,9 +30,12 @@ const MyReviewsCard = ({reviewInfo , handleDelete}) => {
                         {
                             userVerified ? <> <p className='text-success m-0' > <FaCheckCircle /></p></> : <><p className='text-danger'><FaTimes /></p></>
                         }
-                       {
-                        user?.email&&user?.uid?<><button onClick={()=>handleDelete(_id)} className='p-3 dlt-btn'><FaTrashAlt className='text-danger'></FaTrashAlt></button></>:<></>
-                       }
+                        {
+                            user?.email && user?.uid ? <><button onClick={() => handleDelete(_id)} className='p-3 dlt-btn'><FaTrashAlt className='text-danger'></FaTrashAlt></button></> : <></>
+                        }
+                        <div>
+                            <button className='edit-btn p-2'><Link to={`/update/${_id}`}>Edit</Link></button>
+                        </div>
                     </div>
                 </div>
             </div>

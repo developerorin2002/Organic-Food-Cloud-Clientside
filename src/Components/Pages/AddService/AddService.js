@@ -1,8 +1,10 @@
 import React from 'react';
 import toast from 'react-hot-toast';
 import addImg from '../../Assets/addService.svg';
+import useTitle from '../../Utilities/DynamicTitle/DynamicTitle';
 import './AddService.css'
 const AddService = () => {
+    useTitle('Add Service')
     const handleAddService = (event) => {
         event.preventDefault();
         const form = event.target;

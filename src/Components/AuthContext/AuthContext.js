@@ -4,6 +4,7 @@ import app from '../Firebase/Firebase.config';
 import { createContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import toast from 'react-hot-toast';
 
 const auth = getAuth(app)
 const provider = new GoogleAuthProvider();
@@ -32,6 +33,9 @@ const AuthContext = ({children}) => {
     const logOut = () =>{
             localStorage.removeItem('token')
             signOut(auth)
+            .then(res=>toast.success('Log Out Successfully'))
+            .catch(err=>toast.err(err.message))
+
     }
     // google signIn
     const googleSignIn = ()=>{

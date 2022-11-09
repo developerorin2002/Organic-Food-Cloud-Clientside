@@ -35,7 +35,7 @@ const Home = () => {
                 <h2 className='text-center py-3'>Explore Our Service</h2>
                 <div className="row">
                     {
-                        services.map(service => <Service service={service}></Service>)
+                        services.map(service => <Service key={service._id} service={service}></Service>)
                     }
                     <div>
                         <div className="container">

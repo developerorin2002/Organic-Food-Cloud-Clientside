@@ -1,7 +1,9 @@
 import React from 'react';
 import { FaSadTear } from 'react-icons/fa';
+import useTitle from '../../Utilities/DynamicTitle/DynamicTitle';
 import './ErorPage.css'
 const ErrorPage = () => {
+    useTitle('404 Error')
     return (
         <div>
             <div>

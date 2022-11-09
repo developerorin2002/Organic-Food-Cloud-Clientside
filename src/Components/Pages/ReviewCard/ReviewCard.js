@@ -18,7 +18,7 @@ const ReviewCard = ({ reviewinfo }) => {
                 </div>
                 <div className='product-name'>
                     {
-                        rating ? <p className='m-0'>Ratings : {[...Array(rating).keys()].map(r => <FaStar className='review-ratings'></FaStar>)}</p> : <></>
+                        rating ? <p className='m-0'>Ratings : {[...Array(rating).keys()].map(r => <FaStar key={r} className='review-ratings'></FaStar>)}</p> : <></>
                     }
                 </div>
                 <div>
