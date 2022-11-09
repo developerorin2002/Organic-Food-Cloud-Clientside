@@ -6,8 +6,11 @@ import googleImg from '../../Assets/icons/google.png'
 import { useContext } from 'react';
 import { AuthenticationContext } from '../../AuthContext/AuthContext';
 import toast from 'react-hot-toast';
+import useTitle from '../../Utilities/DynamicTitle/DynamicTitle';
 const Register = () => {
-    const { signUpUser, updateUserProfile,googleSignIn  } = useContext(AuthenticationContext);
+    // dynamic title
+    useTitle('register')
+    const { signUpUser, updateUserProfile, googleSignIn } = useContext(AuthenticationContext);
     const handleRegisterSubmit = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -21,18 +24,46 @@ const Register = () => {
                 updateUserProfile(name, photoUrl)
                     .then(res => {
                         toast.success('Name Updated')
+                    });
+                const user = {
+                    email: res.user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
                     })
             })
             .catch(err => toast.err(err))
 
     };
     // google signUp 
-    const handleGoogle = () =>{
+    const handleGoogle = () => {
         googleSignIn()
-        .then(res=>{
-            toast.success('Login SuccessFully')
-        })
-        .catch(err=>toast.err(err.message))
+            .then(res => {
+                toast.success('Login SuccessFully');
+                const user = {
+                    email: res.user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+            })
+            .catch(err => toast.err(err.message))
 
     }
     return (

@@ -11,21 +11,21 @@ const ReviewCard = ({ reviewinfo }) => {
                     <img src={userImage} alt="" />
                 </div>
                 <div className='product-name py-3'>
-                    <p className='m-0'>Product Name : <span></span>{productname}</p>
+                    <p className='m-0'>Product Name : {productname}</p>
                 </div>
-                <div className='user-review-text'>
-                    <p className='py-3 m-0'><span>User Experience </span>: {review}</p>
+                <div className='product-name'>
+                    <p className=' m-0'><span className='text-danger'>Comments</span>: "{review}"</p>
                 </div>
-                <div className='user-review-text'>
+                <div className='product-name'>
                    {
-                    rating? <p className='py-3 m-0'>Ratings : {[...Array(rating).keys()].map(r=><FaStar></FaStar>)}</p>:<></>
+                    rating?<p className='m-0'>Ratings : {[...Array(rating).keys()].map(r=><FaStar className='review-ratings'></FaStar>)}</p>:<></>
                    }
                 </div>
                 <div>
                     <div className="user-email d-flex align-items-center py-2">
                         <p>{email}</p>
                         {
-                            userVerified ? <><p className='text-success'><FaCheckCircle /></p></> : <><p className='text-danger'><FaTimes /></p></>
+                             userVerified ? <> <p className='text-success'> <FaCheckCircle /></p></> : <><p className='text-danger'><FaTimes /></p></>
                         }
                     </div>
                 </div>

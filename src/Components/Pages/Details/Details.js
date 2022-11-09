@@ -6,9 +6,11 @@ import { FaStar, FaUser } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import userAvatar from '../../Assets/user.png'
 import { AuthenticationContext } from '../../AuthContext/AuthContext';
+import useTitle from '../../Utilities/DynamicTitle/DynamicTitle';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import './Details.css'
 const Details = () => {
+    useTitle('product details')
     const { user } = useContext(AuthenticationContext)
     const service = useLoaderData();
     const { name, _id, image, price, ratings, details } = service;
@@ -37,8 +39,6 @@ const Details = () => {
             userImage: user?.photoURL,
             userVerified: true,
             rating: parseInt(rating)
-
-
         };
         console.log(review);
         fetch('http://localhost:5000/review', {
@@ -76,46 +76,41 @@ const Details = () => {
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <h2 className='text-center'>Want To add A Review ?</h2>
                         {
-                            user?.email && user.uid ?
-                                <>
-                                    <form onSubmit={handleReview}>
-                                        <div className='review-avatar text-center py-3'>
-                                            {user?.email ? <><img src={user.photoURL} alt="" /></> : <><img src={userAvatar} alt="" /></>}
-                                        </div>
-                                        <div>
-                                            <input readOnly className='w-100 py-2 review-input' defaultValue={user?.email} type="email" name='email' />
-                                        </div>
-                                        <div>
-                                            <p>Write A Review</p>
-                                            <textarea className='w-100 py-2 review-input' name="message" id="" cols="50" rows="5"></textarea>
-                                        </div>
-                                        <div className='rating'>
-                                            <p className="d-flex align-items-center">Rate Our Product :
-                                                <select onChange={(event) => setRating(event.target.value)}>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                </select>
-                                                <FaStar className="rate-icon mx-2"></FaStar>
-
-                                            </p>
-                                        </div>
-                                        <div>
-                                            <button type="submit" className='review-btn my-2'>Submit</button>
-                                        </div>
-                                    </form>
-                                </>
-                                :
-                                <>
-                                    <div className='text-center'>
-                                        <button className='login-btn review-login'><Link to="/login">Please Login</Link> <FaUser></FaUser></button>
-                                    </div>
-                                </>
+                            user?.email && user.uid ? <><h2 className='text-center'>Write A Review For Get Better Quality food</h2></> : <><h2 className='text-center'>Please LogIn To add A Review </h2></>
                         }
+                        <form onSubmit={handleReview}>
+                            <div className='review-avatar text-center py-3'>
+                                {user?.email ? <><img src={user.photoURL} alt="" /></> : <><img src={userAvatar} alt="" /></>}
+                            </div>
+                            <div>
+                                <input readOnly className='w-100 py-2 review-input' defaultValue={user?.email} type="email" name='email' />
+                            </div>
+                            <div>
+                                <p>Write A Review</p>
+                                {
+                                    user?.email&&user?.uid?<textarea className='w-100 py-2 review-input' name="message" id="" cols="50" rows="5"></textarea>:<textarea className='w-100 py-2 review-input' readOnly name="message" id="" cols="50" rows="5"></textarea>
+                                }
+                            </div>
+                            <div className='rating'>
+                                <p className="d-flex align-items-center">Rate Our Product :
+                                    <select onChange={(event) => setRating(event.target.value)}>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <FaStar className="rate-icon mx-2"></FaStar>
+
+                                </p>
+                            </div>
+                            <div>
+                                {
+                                    user?.email && user.uid ?<><button type="submit" className='review-btn my-2'>Submit</button></> : <> <button className='login-btn review-login'><Link to="/login">Please Login</Link> <FaUser></FaUser></button></>
+                                }
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

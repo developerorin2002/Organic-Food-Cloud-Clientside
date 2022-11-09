@@ -6,31 +6,66 @@ import './Login.css';
 import googleImg from '../../Assets/icons/google.png'
 import { AuthenticationContext } from '../../AuthContext/AuthContext';
 import toast from 'react-hot-toast';
+import useTitle from '../../Utilities/DynamicTitle/DynamicTitle';
 const Login = () => {
-    const {loginUser,googleSignIn} = useContext(AuthenticationContext)
+    // dynamic title
+    useTitle('Login')
+    const { loginUser, googleSignIn } = useContext(AuthenticationContext)
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password)
-        loginUser(email,password)
-        .then(res=>{
-            console.log(res.user)
-        
-            toast.success('User Login Successfull');
+        console.log(email, password)
+        loginUser(email, password)
+            .then(res => {
+                console.log(res.user)
+                const user = {
+                    email: res.user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+                toast.success('User Login Successfull');
+                // validate
+                if (user) {
+                    form.reset();
+                }
+            })
+            .catch(err => console.log(err.message))
 
-        })
-        .catch(err=>toast.err(err.message));
 
 
     };
-    const handleGoogleLogin = () =>{
+    const handleGoogleLogin = () => {
         googleSignIn()
-        .then(res=>{
-            console.log(res.user)
-            toast.success('User Login Successfull')
-        })
+            .then(res => {
+
+                console.log(res.user)
+                toast.success('User Login Successfull')
+                const user = {
+                    email: res.user.email
+                }
+                fetch('http://localhost:5000/jwt', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        localStorage.setItem('token', data.token)
+                    })
+            })
     }
     return (
         <div>
@@ -40,7 +75,7 @@ const Login = () => {
                         <img src={loginImg} className="w-100" alt="" />
                     </div>
                     <div className="col-lg-6">
-                     
+
                         <div className='login-form px-3 py-4'>
                             <h3 className='text-center pt-3'>SIGN IN</h3>
                             <div className='user-profile text-center'><FaUser /></div>
@@ -59,7 +94,7 @@ const Login = () => {
                             <div className='mt-2'>
                                 <button onClick={handleGoogleLogin} className='icon-border px-3 py-2'> <img src={googleImg} className="google-icon" alt="" /> Continue with google</button>
                             </div>
-                           
+
 
                         </div>
                     </div>

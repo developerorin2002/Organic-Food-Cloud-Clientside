@@ -30,7 +30,8 @@ const AuthContext = ({children}) => {
     }
     // user log out 
     const logOut = () =>{
-        return signOut(auth);
+            localStorage.removeItem('token')
+            signOut(auth)
     }
     // google signIn
     const googleSignIn = ()=>{

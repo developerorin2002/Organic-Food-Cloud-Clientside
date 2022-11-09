@@ -23,7 +23,8 @@ const Header = () => {
                             <div className='nav-container'>
                                 <Link to='/home'>Home</Link>
                                 <Link to='/services'>Services</Link>
-                                <Link to='/review'>Review</Link>
+                                <Link to='/review'>MyReviews</Link>
+                                <Link to='/addservice'>AddService</Link>
                                 <Link to='/blog'>Blog</Link>
                                 <Link to='/login'>Login</Link>
                                 <Link to='/register'>Register</Link>

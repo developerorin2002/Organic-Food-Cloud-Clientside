@@ -3,10 +3,13 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { FaChevronRight, FaFolderOpen, FaHome, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useTitle from '../../Utilities/DynamicTitle/DynamicTitle';
 import Service from '../Service/Service';
 import './Home.css'
 
 const Home = () => {
+    // dynamic title
+    useTitle('Home')
     const [services, setServices] = useState([])
     console.log(services)
     useEffect(() => {
