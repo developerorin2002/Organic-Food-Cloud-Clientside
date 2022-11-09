@@ -22,19 +22,19 @@ const MyReviews = () => {
             .then(data => setMyReviews(data))
     }, [user.email]);
     // delete user
-    const handleDelete = (id) =>{
+    const handleDelete = (id) => {
         console.log(id)
-        fetch(`http://localhost:5000/myreviews/${id}`,{
-            method:'DELETE',
+        fetch(`http://localhost:5000/myreviews/${id}`, {
+            method: 'DELETE',
         })
-        .then(res=>res.json())
-        .then(data=>{
-            if(data.deletedCount>0){
-                toast.success('User Review Delete Successfully')
-                const remainingReviews = myReviews.filter(review=> review._id !== id);
-                setMyReviews(remainingReviews)
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.deletedCount > 0) {
+                    toast.success('User Review Delete Successfully')
+                    const remainingReviews = myReviews.filter(review => review._id !== id);
+                    setMyReviews(remainingReviews)
+                }
+            })
     }
     return (
         <div>
