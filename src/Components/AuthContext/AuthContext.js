@@ -34,7 +34,7 @@ const AuthContext = ({children}) => {
             localStorage.removeItem('token')
             signOut(auth)
             .then(res=>toast.success('Log Out Successfully'))
-            .catch(err=>toast.err(err.message))
+            .catch(err=>toast.error(err.message))
 
     }
     // google signIn

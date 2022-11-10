@@ -20,7 +20,7 @@ const AddService = () => {
             details: details,
             ratings: parseInt(ratings)
         }
-        fetch('http://localhost:5000/services', {
+        fetch('https://assignment-11-server-vert-five.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

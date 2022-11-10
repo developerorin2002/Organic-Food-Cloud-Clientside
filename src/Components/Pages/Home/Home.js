@@ -14,7 +14,7 @@ const Home = () => {
     const [services, setServices] = useState([])
     console.log(services)
     useEffect(() => {
-        fetch('http://localhost:5000/homeservice')
+        fetch('https://assignment-11-server-vert-five.vercel.app/homeservice')
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
@@ -76,19 +76,19 @@ const Home = () => {
             </div>
             <div className="container">
                 <h1 className='text-center py-3'>Explore My Expert Skills </h1>
-                <div className="row py-3">
-                    <div className="col-lg-6">
+                <div className="row py-3 align-items-center">
+                    <div className="col-lg-6 py-2">
                         <img src={cooking} className="w-100 img-fluid" alt="" />
                     </div>
-                    <div className="col-lg-6">
+                    <div className="col-lg-6 py-2">
                         <div className='expert '>
                            <div className='text-center'>
                            <FaMortarPestle className='expert-icon'></FaMortarPestle>
                            </div>
-                            <h3>1.Good At Cooking </h3>
-                            <h3>2.Deliver Product In On Time  </h3>
-                            <h3>3.Fresh And Delicius Food And Fully Hand Made </h3>
-                            <h3>4.Clean And Fresh Environment </h3>
+                            <h3>1.GOOD COOKING </h3>
+                            <h3>2.DELIVER FOOD ON TIME </h3>
+                            <h3>3.FRESH AND FULLY HAND MADE</h3>
+                            <h3>4.CLEAN AND FRESH ENVIRONMENT</h3>
                         </div>
                     </div>
                 </div>
