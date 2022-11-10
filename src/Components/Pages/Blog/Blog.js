@@ -14,7 +14,7 @@ const Blog = () => {
                     </div>
                 </div>
                 <div className="row mt-4">
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <h4>Difference between SQL and NoSQL?</h4>
                         <p>
                             1.SQL databases are relational, NoSQL databases are non-relational.
@@ -24,7 +24,7 @@ const Blog = () => {
                             5.SQL databases are better for multi-row transactions, while NoSQL is better for unstructured data like documents or JSON.
                         </p>
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <h4>What is JWT, and how does it work?</h4>
                         <p>JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as JSON object.
 
@@ -34,11 +34,11 @@ const Blog = () => {
 
                             JWT is a token based stateless authentication mechanism. Since it is a client-side based stateless session, server doesn't have to completely rely on a datastore(database) to save session information.</p>
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <h4>What is the difference between javascript and NodeJS??</h4>
                         <p>JavaScript is a simple programming language that can be used with any browser that has the JavaScript Engine installed. Node. js, on the other hand, is an interpreter or execution environment for the JavaScript programming language.</p>
                     </div>
-                    <div className="col-lg-4">
+                    <div className="col-lg-6">
                         <h4>How does NodeJS handle multiple requests at the same time?</h4>
                         <p> NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them.</p>
                     </div>

@@ -84,7 +84,9 @@ const Details = () => {
                                 {user?.email ? <><img src={user.photoURL} alt="" /></> : <><img src={userAvatar} alt="" /></>}
                             </div>
                             <div>
-                                <input readOnly className='w-100 py-2 review-input' defaultValue={user?.email} type="email" name='email' />
+                                {
+                                    user?.email&&user.uid ?<input readOnly className='w-100 py-2 review-input' defaultValue={user?.email} type="email" name='email' />:<input readOnly className='w-100 py-2 review-input' type="email" name='email' />
+                                }
                             </div>
                             <div>
                                 <p>Write A Review</p>

@@ -39,7 +39,9 @@ const MyReviews = () => {
     return (
         <div>
             <div className="container">
-                <h2 className='text-center'>MY REVIEWS</h2>
+                {
+                    myReviews.length>0?<><h2 className='text-center'>MY REVIEWS</h2></>:<><div className='py-5 my-5'><h2 className='text-center py-5 my-5'>This User Have No Review</h2></div></>
+                }
                 <div className="row">
                     {
                         myReviews.map(review => <MyReviewsCard key={review._id} handleDelete={handleDelete} reviewInfo={review}></MyReviewsCard>)

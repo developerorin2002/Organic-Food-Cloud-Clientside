@@ -1,10 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { FaChevronRight, FaFolderOpen, FaHome, FaUser } from 'react-icons/fa';
+import { FaChevronRight, FaFolderOpen, FaHome, FaMortarPestle, FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useTitle from '../../Utilities/DynamicTitle/DynamicTitle';
 import Service from '../Service/Service';
+import cooking from '../../Assets/cooking.jpeg'
 import './Home.css'
 
 const Home = () => {
@@ -69,6 +70,25 @@ const Home = () => {
                             <p className='text-center'><FaUser className='about-icon'></FaUser></p>
                             <h4 className='text-white text-center'>Our vision</h4>
                             <p className='text-white mt-4'>Vision statements are often matched with company values and/or a vision. Together, a mission, vision, and values describe what your restaurant stands for. In other words, they collectively serve as a compass for your business, guiding you towards your north star – the goals that you hope to achieve through your restaurant.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="container">
+                <h1 className='text-center py-3'>Explore My Expert Skills </h1>
+                <div className="row py-3">
+                    <div className="col-lg-6">
+                        <img src={cooking} className="w-100 img-fluid" alt="" />
+                    </div>
+                    <div className="col-lg-6">
+                        <div className='expert '>
+                           <div className='text-center'>
+                           <FaMortarPestle className='expert-icon'></FaMortarPestle>
+                           </div>
+                            <h3>1.Good At Cooking </h3>
+                            <h3>2.Deliver Product In On Time  </h3>
+                            <h3>3.Fresh And Delicius Food And Fully Hand Made </h3>
+                            <h3>4.Clean And Fresh Environment </h3>
                         </div>
                     </div>
                 </div>

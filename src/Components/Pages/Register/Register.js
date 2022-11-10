@@ -40,7 +40,7 @@ const Register = () => {
                         localStorage.setItem('token', data.token)
                     })
             })
-            .catch(err => toast.err(err))
+            .catch(err => toast.error(err.message))
 
     };
     // google signUp 

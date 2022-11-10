@@ -29,8 +29,9 @@ const UpdateReview = () => {
             .then(res => res.json())
             .then(data => {
                 toast.success('Review Updated');
-                form.reset();
+                form.reset()
             })
+        
     }
     return (
         <div>
@@ -48,10 +49,10 @@ const UpdateReview = () => {
                             <div>
                                 <input readOnly className='w-100 py-2 review-input' defaultValue={user?.email} type="email" name='email' />
                             </div>
-                            <div>
-                                <p>Write A Review</p>
+                            <div className='my-3'>
+                                <h6>Edit Your Review</h6>
                                 {
-                                    user?.email && user?.uid ? <textarea className='w-100 py-2 review-input' defaultValue={review} name="message" id="" cols="50" rows="5"></textarea> : <textarea className='w-100 py-2 review-input' readOnly name="message" id="" cols="50" rows="5"></textarea>
+                                    user?.email && user?.uid ? <textarea className='w-100 py-2 review-input' placeholder={review} name="message" id="" cols="50" rows="5"></textarea> : <textarea className='w-100 py-2 review-input' readOnly name="message" id="" cols="50" rows="5"></textarea>
                                 }
                             </div>
                             <div className='rating'>
